@@ -17,6 +17,6 @@ provider "vultr" {
 
 provider "helm" {
     kubernetes {
-        config_path = pathexpand("~/.kube/vke-${var.VULTR_CLUSTER_NAME}-config")
+        config_path = local_file.kube_config.filename
     }
 }
