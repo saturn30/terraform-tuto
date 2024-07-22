@@ -37,3 +37,4 @@ yarn-error.log*
 
 # 테라폼 환경변수
 *.tfvars
+*.tfstate
