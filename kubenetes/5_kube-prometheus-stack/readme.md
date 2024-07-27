@@ -7,3 +7,6 @@ helm install kube-prometheus-stack -n monitoring --create-namespace -f values.ya
 ```
 
 https://blog.betaman.kr/134
+
+업데이트
+`helm upgrade kube-prometheus-stack -n monitoring -f values.yaml prometheus-community/kube-prometheus-stack`

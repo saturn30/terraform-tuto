@@ -952,15 +952,6 @@ grafana:
   enabled: true
   namespaceOverride: ""
 
-  grafana.ini:
-    auth:
-      disable_login_form: true
-    auth.anonymous:
-      enabled: true
-      org_role: Admin
-    dashboards:
-      default_home_dashboard_path: /var/lib/grafana/dashboards/home.json
-
   ## ForceDeployDatasources Create datasource configmap even if grafana deployment has been disabled
   ##
   forceDeployDatasources: false
@@ -1122,17 +1113,21 @@ grafana:
   ## Configure additional grafana datasources (passed through tpl)
   ## ref: http://docs.grafana.org/administration/provisioning/#datasources
   additionalDataSources: 
-  - name: loki
-    access: proxy
-    # basicAuth: true
+    - name: Loki
+      type: loki
+      url: http://loki-stack:3100
+      access: proxy
+  # - name: prometheus-sample
+  #   access: proxy
+  #   basicAuth: true
   #   basicAuthPassword: pass
   #   basicAuthUser: daco
   #   editable: false
   #   jsonData:
   #       tlsSkipVerify: true
   #   orgId: 1
-    type: loki
-    url: http:/loki-stack:3100
+  #   type: prometheus
+  #   url: https://{{ printf "%s-prometheus.svc" .Release.Name }}:9090
   #   version: 1
 
   ## Passed to grafana subchart and used by servicemonitor below
