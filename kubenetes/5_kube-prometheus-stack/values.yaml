@@ -983,12 +983,12 @@ grafana:
   ingress:
     ## If true, Grafana Ingress will be created
     ##
-    enabled: false
+    enabled: true
 
     ## IngressClassName for Grafana Ingress.
     ## Should be provided if Ingress is enable.
     ##
-    # ingressClassName: nginx
+    ingressClassName: nginx
 
     ## Annotations for Grafana Ingress
     ##
@@ -1117,6 +1117,8 @@ grafana:
       type: loki
       url: http://loki-stack:3100
       access: proxy
+      jsonData:
+        maxLines: 1000
   # - name: prometheus-sample
   #   access: proxy
   #   basicAuth: true
